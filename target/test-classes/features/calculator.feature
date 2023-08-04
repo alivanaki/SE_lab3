@@ -1,18 +1,28 @@
 @tag
 Feature: Calculator
 
-  Scenario: add two numbers
-    Given Two input values, 1000 and 2000
-    When I add the two values
-    Then I expect the result 3000
+  Scenario: mathematical operation (multiply)
+    Given Three input values, 2 and 3 and *
+    When I want to the result
+    Then I expect the result 6
 
-  Scenario Outline: add two numbers
-    Given Two input values, <first> and <second>
-    When I add the two values
+  Scenario: mathematical operation (divide)
+    Given Three input values, 2 and 3 and /
+    When I want to the result
+    Then I expect the result 0.666666
+
+  Scenario: mathematical operation (power)
+    Given Three input values, 2 and 3 and ^
+    When I want to the result
+    Then I expect the result 8
+
+  Scenario Outline: mathematical operation
+    Given Three input values, <first> and <second> and <operator>
+    When I want to the result
     Then I expect the result <result>
 
     Examples:
-      | first | second | result |
-      | 1     | 12     | 13     |
-      | -1    | 6      | 5  	|
-      | 2     | 2      | 4	    |
+      | first | second | operator | result |
+      | 6     | 2      | *        | 12     |
+      | 6     | 2      | /        | 3      |
+      | 6     | 2      | ^        | 36     |
